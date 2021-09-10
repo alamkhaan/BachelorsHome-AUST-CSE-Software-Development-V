@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Messenger";
+}
+@using Microsoft.AspNetCore.Http
+<meta name="viewport" content="width=device-width, initial-scale=1">
+@model BachelorsHome.Models.Chat
+@{
+    var ChatList = ViewBag.ChatList;
+    var MessageList = ViewBag.MessageList;
+    var pre = 0;
+}
+<div class="row2">
+    <div class="chat_Box1">
+
+        <div class="vertical-menu">
+            @if (ChatList.Count != 0)
+            {
+                foreach (var item in ChatList)
+                {
+                    <a asp-action="Chat" asp-controller="Product" asp-route-id="@item.Id"><img class="chat_image3" src=@item.Picture /> @item.Name</a>
+                }
+            }
+
+        </div>
+
+    </div>
+
+    <div class="chat_Box2">
+
+        <div class="messagetop">
+            <div class="row1">
+                <img class="chat_image" src=@Html.DisplayFor(model => model.OppoPic) />
+
+
+                <h4 class="chat-head"><b><a asp-action="Profile" asp-controller="Account" asp-route-id="@Model.OppoId">@Html.DisplayFor(model => model.OppoName)</a></b></h4>
+            </div>
+        </div>
+
+
+        <div class="Messagebox">
+            <div class="space2"></div>
+            @foreach (var msg in MessageList)
+            {
+                if (msg.UserId == Context.Session.GetInt32("userid").Value)
+                {
+                    <div class="row1">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <div class="row1">
+                                <div class="msg">
+                                    <div class="message1">
+                                        <p>@msg.Text</p>
+                                    </div>
+
+                                </div>
+                                <div class="imguser">
+                                    @if (pre != msg.UserId)
+                                    {
+                                        pre = msg.UserId;
+                                        <img class="chat_image2" src=@msg.UserPic />
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pb-1"></div>
+
+                }
+                else
+                {
+                    <div class="row1">
+                        <div class="col-md-6">
+                            <div class="row1">
+                                <div class="imguser">
+                                    @if (pre != msg.UserId)
+                                    {
+                                        pre = msg.UserId;
+                                        <img class="chat_image2" src=@msg.UserPic />
+                                    }
+                                </div>
+                                <div class="msg">
+                                    <div class="message">
+                                        <p>@msg.Text</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+                    <div class="pb-1"></div>
+                }
+            }
+
+
+
+
+
+
+
+
+        </div>
+
+        <form asp-action="Chat" asp-controller="Product" asp-route-id="@Model.OppoId" method="post">
+            <div class="row1">
+
+
+                <div class="message3">
+                    <input asp-for="Text" class="textarea9" type="text" required="" placeholder="Write your message here">
+                </div>
+
+                <button type="Submit" class="btn loginbutton" value="Submit" name=""> Send</button>
+            </div>
+        </form>
+    
+
+    </div>
+
+</div>

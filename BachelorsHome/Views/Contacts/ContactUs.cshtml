@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+@model BachelorsHome.Models.Contacts
+
+
+@if (ViewBag.Notification=="Success")
+{
+    <div class="col-md-12">
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>Message Sent Successfully</label>
+        </div>
+    </div>
+    ViewBag.Notification = "";
+}
+<div class="container signup-content">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+
+        <div class="col-md-5">
+
+            <img class="contact-pic-design" src="~/Images/476.png">
+        </div>
+        <div class="contactus-type-box">
+            <form asp-action="ContactUs">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <h4 class="signup-title"><b>Send Your Message</b></h4><br>
+
+
+                <div class="row">
+
+                    <div class="col-md-4 contact-form-row">
+                        <label asp-for="Name">Name:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input asp-for="Name" class="textarea6" type="text"  required="" placeholder="Enter Your Name">
+                    </div>
+                </div>
+
+
+
+                <div class="row space2"></div>
+
+
+                <div class="row">
+
+                    <div class="col-md-4 contact-form-row">
+                        <label asp-for="Email">Email:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input asp-for="Email" class="textarea6" type="email" required="" placeholder="Enter Your Email">
+                    </div>
+                </div>
+
+
+                <div class="row space2"></div>
+
+
+
+
+                <div class="row">
+
+                    <div class="col-md-4 contact-form-row">
+                        <label asp-for="Phone">Contact No:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <textarea asp-for="Phone" class="textarea6" required="" placeholder="01"></textarea>
+                    </div>
+                </div>
+
+                <div class="row space2"></div>
+
+                <div class="row">
+
+                    <div class="col-md-4 contact-form-row">
+                        <label asp-for="Problems" >Problems:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <textarea asp-for="Problems" class="textarea7" name="problems" required="" placeholder="Enter Message:"></textarea>
+                    </div>
+                </div>
+
+                <div class="row space2"></div>
+                <div class="row">
+
+                    <div class="col-md-4 contact-form-row">
+                        <label asp-for="Suggestions" >Suggestions:</label>
+                    </div>
+                    <div class="col-md-7">
+                        <textarea asp-for="Suggestions" class="textarea7" name="suggestions" required="" placeholder="Enter Message:"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="contactus-form-submit">
+                    <button type="Submit" class="btn loginbutton" value="Submit" name="submit"> Submit</button>
+                </div>
+
+            </form>
+
+
+            <div class="row space2"></div>
+
+        </div>
+
+
+
+    </div>
+    <div class="row space"></div>
+</div>
+<div class="row space"></div>
+
+        

@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "Reviews";
+}
+@{
+    var total = ViewBag.ReviewList;
+}
+@if (TempData.ContainsKey("invalid4") != false)
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>Invalid User Id</label>
+        </div>
+    </div>
+    TempData.Clear();
+}
+else if (TempData.ContainsKey("invalid5") != false)
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>You cannot give self review</label>
+        </div>
+    </div>
+    TempData.Clear();
+}
+else if (TempData.ContainsKey("invalid6") != false)
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>You already gave a review to this user</label>
+        </div>
+    </div>
+    TempData.Clear();
+}
+else if (TempData.ContainsKey("invalid7") != false)
+{
+    <div class="col-md-12">
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>Review Added Successfully</label>
+        </div>
+    </div>
+    TempData.Clear();
+}
+<form action="/Product/GiveReviews" method="Post">
+    <div class="row2">
+
+
+
+        <img class="review" src="~/Images/rating.jpg" />
+
+        <div class="review_rating">
+            <div class="space2"></div>
+            <div class="space2"></div>
+            <div class="space2"></div>
+            <div class="row1 padingBottom">
+                <label class="reviewRating">User Id:</label>
+                <input class="textarea10" type="number" name="userid" required="" placeholder="Write User Id to give review">
+            </div>
+            <div class="row1 padingBottom">
+                <label class="reviewRating">Give Rating:</label>
+                <select name="rating" class="textarea10">
+                    <option value="1.0">1.0</option>
+                    <option value="2.0">2.0</option>
+                    <option value="3.0">3.0</option>
+                    <option value="4.0">4.0</option>
+                    <option value="5.0">5.0</option>
+
+                </select>
+
+            </div>
+            <div class="row1">
+                <label class="reviewRating">Give Review:</label>
+                <input class="textarea11" type="text" name="text" required="" placeholder="Write review about this user">
+            </div>
+            <div class="row1 space3">
+                <button type="Submit" class="btn loginbutton" value="Submit" name=""> Send</button>
+            </div>
+
+        </div>
+
+
+        <img class="review" src="~/Images/review.jpg" />
+
+
+
+    </div>
+</form>
+<form action="/Product/Reviews" method="Post">
+    <div class="row3 space4">
+
+        <label class="reviewRating2">Search User Review:</label>
+        <input class="textarea12" type="number" id="SearchId" name="SearchId" required="" placeholder="Type User Id Here">
+        <button type="Submit" class="btn loginbutton" value="Submit" name=""> Search</button>
+
+    </div>
+</form>
+<div class="row2 pad">
+    <div class="rating2">
+        <h4><b>User</b></h4>
+    </div>
+    <div class="rating3"></div>
+    <div class="rating2">
+        <h4><b>Reviewer</b></h4>
+    </div>
+
+</div>
+<div class="row2">
+    <div class="space2"></div>
+    @if (total != null)
+    {
+
+        @foreach (var item in total)
+        {
+            <div class="row1">
+                <div class="rating2">
+                    <img class="ReviewImage" src=@item.UserPic />
+                    <label><b><a asp-action="Profile" asp-controller="Account" asp-route-id="@item.UserId">@item.UserName </a> </b> </label>
+                </div>
+
+                <div class="rating3">
+                    <div class="row1">
+                        <span class="e-item-card-recently-viewed_stars">
+                            @if (Convert.ToInt32(Math.Floor(item.Value)) == 1)
+                            {
+                                <span class="m-item-card-recently-viewed_stars__orange">
+                                    ★&#9734&#9734&#9734&#9734
+                                </span>
+                            }
+                            else if (Convert.ToInt32(Math.Floor(item.Value)) == 2)
+                            {
+                                <span class="m-item-card-recently-viewed_stars__orange">
+                                    ★★&#9734&#9734&#9734
+                                </span>
+                            }
+                            else if (Convert.ToInt32(Math.Floor(item.Value)) == 3)
+                            {
+                                <span class="m-item-card-recently-viewed_stars__orange">
+                                    ★★★&#9734&#9734
+                                </span>
+                            }
+                            else if (Convert.ToInt32(Math.Floor(item.Value)) == 4)
+                            {
+                                <span class="m-item-card-recently-viewed_stars__orange">
+                                    ★★★★&#9734
+                                </span>
+                            }
+                            else if (Convert.ToInt32(Math.Floor(item.Value)) == 5)
+                            {
+                                <span class="m-item-card-recently-viewed_stars__orange">
+                                    ★★★★★
+                                </span>
+                            }
+
+
+                        </span>
+                        <label class="gray">@item.Value</label>
+                    </div>
+                    <div class="row1">
+                        <p>@item.Text</p>
+                    </div>
+                    @* <div class="row1">
+                            <a href="~/Images/alam.jpg">Edit</a>
+                            <a class="pad" href="~/Images/Ashiqul.jpg">Delete</a>
+                        </div>*@
+
+                </div>
+
+
+                <div class="rating2">
+                    <img class="ReviewImage" src=@item.ReviewerPic />
+                    <label><b><a asp-action="Profile" asp-controller="Account" asp-route-id="@item.ReviewerId">@item.ReviewerName </a> </b> </label>
+                </div>
+
+
+
+            </div>
+
+            <div class="space2"></div>
+            <div class="space2"></div>
+            <div class="space2"></div>
+        }
+    }
+
+
+</div>

@@ -1,0 +1,287 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model BachelorsHome.Models.Product
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="background-update-profile">
+    <div class="container">
+        <div class="view-account">
+            <section class="module">
+                <div class="module-inner">
+                    <div class="side-bar">
+                        <div class="user-info">
+                            <img class="img-profile img-circle img-responsive center-block" src="~/@Html.DisplayFor(model => model.Picture)">
+                           
+                        </div>
+
+                    </div>
+                    <div class="content-panel">
+                        <h2 class="title">Edit Post</h2>
+                        
+
+                            <fieldset class="fieldset">
+                                <h3 class="fieldset-title">Update Your Post Info:</h3>
+
+                                <form asp-action="EditPost" enctype="multipart/form-data" asp-antiforgery="true" method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Heading:</label>
+
+                                        </div>
+                                        <div class="row1">
+
+                                            <div class="col-md-12">
+                                                <input asp-for="Heading" type="text" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Division:</label>
+                                            <label class="col-md-6  control-label">District:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <select asp-for="Division" id="dbDivision" class="form-control" asp-items="@(new SelectList(ViewBag.DivisionList,"Value","Text"))">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select asp-for="District" id="dbDistrict" class="form-control" asp-items="@(new SelectList(ViewBag.DistrictList,"Value","Text"))">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Thana:</label>
+                                            <label class="col-md-6  control-label">House Address:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <select asp-for="Thana" id="dbThana" class="form-control" asp-items="@(new SelectList(ViewBag.ThanaList,"Value","Text"))">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input asp-for="HomeAddress" type="text" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Type:</label>
+                                            <label class="col-md-6  control-label">Gender:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <select asp-for="Type" class="form-control">
+                                                    <option value="AC">AC</option>
+                                                    <option value="Non-AC">Non-AC</option>
+
+                                                </select>
+                                         
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select asp-for="Gender" class="form-control">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-12  control-label">Picture:</label>
+
+                                        </div>
+                                        <div class="row1">
+
+                                            <div class="form-group col-md-12">
+                                               
+                                                    <input type="file" class="form-control" name="myFile" accept="image/*" id="myFile">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Room Size:</label>
+                                            <label class="col-md-6  control-label">Available Seat:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <input asp-for="RoomSize" type="text" class="form-control" required="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input asp-for="AvailableSeat"  type="number" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Seat Rent:</label>
+                                            <label class="col-md-6  control-label">Total Cost:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <input asp-for="SeatRent" type="number" class="form-control" required="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input asp-for="TotalCost" type="number" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Floor No:</label>
+                                            <label class="col-md-6  control-label">Available From:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <input asp-for="FloorNumber" type="text" class="form-control" required="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input asp-for="AvailableFrom" type="date" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Internet Facility:</label>
+                                            <label class="col-md-6  control-label">Food Facility:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <select asp-for="InternetFacility" class="form-control">
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select asp-for="FoodFacility" class="form-control">
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Attached Washroom:</label>
+                                            <label class="col-md-6  control-label">Attached Balcony:</label>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <select asp-for="AttachedWashroom" class="form-control">
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select asp-for="AttachedBalcony" class="form-control">
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <label class="col-md-6  control-label">Details:</label>
+                                           
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-md-12">
+                                                <input asp-for="Details" type="text" class="form-control textarea7" required="">
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+
+                                    
+                                    <hr>
+                                    <div class="form-group">
+                                        <div class="row1">
+                                            <div class="col-md-6">
+                                                <input class="btn btn-primary" type="submit" value="Update Post">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row1">
+                                    <form asp-action="DeletePost" asp-controller="Product" asp-route-id="@Model.Id">
+                                        <div class="col-md-6">
+                                            <input  class="btn searchbutton" type="submit" value="Delete Post">
+                                        </div>
+                                    </form>
+                                </div>
+                            </fieldset>
+                            
+                            
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#dbDivision").change(function () {
+
+            $.getJSON("/Product/GetDistrictList", { Division: $("#dbDivision").val() }, function (d) {
+                var row = "";
+                $("#dbDistrict").empty();
+                $.each(d, function (i, v) {
+                    row += "<option value=" + v.text + ">" + v.text + "</option>";
+                });
+                $("#dbDistrict").html(row);
+
+                $.getJSON("/Product/GetThanaList", { District: $("#dbDistrict").val() }, function (d) {
+                    var row = "";
+                    $("#dbThana").empty();
+                    $.each(d, function (i, v) {
+                        row += "<option value=" + v.text + ">" + v.text + "</option>";
+                    });
+                    $("#dbThana").html(row);
+                })
+            })
+
+        })
+
+        $("#dbDistrict").change(function () {
+
+            $.getJSON("/Product/GetThanaList", { District: $("#dbDistrict").val() }, function (d) {
+                var row = "";
+                $("#dbThana").empty();
+                $.each(d, function (i, v) {
+                    row += "<option value=" + v.text + ">" + v.text + "</option>";
+                });
+                $("#dbThana").html(row);
+            })
+        })
+    })
+
+</script>

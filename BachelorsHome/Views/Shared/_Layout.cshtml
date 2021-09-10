@@ -1,0 +1,116 @@
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BachelorsHome</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/rating.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/js/site.js"></script>
+    
+
+
+</head>
+<body>
+    <header>
+        <div class="row1">
+            <nav class="col-10 navbar navbar-expand-sm navbar-toggleable-sm navbar-light  box-shadow nav-class">
+                <div class="container">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link nav-text" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link nav-text" asp-area="" asp-controller="Product" asp-action="FindHouse">Find House</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text" asp-area="" asp-controller="Product" asp-action="Advertise">Advertise</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text" asp-area="" asp-controller="Product" asp-action="Reviews">Reviews</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-text" asp-area="" asp-controller="Contacts" asp-action="ContactUs">Contact Us</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+
+
+
+
+
+            <nav class="col-2 navbar navbar-expand-sm navbar-toggleable-sm navbar-light  box-shadow nav-class">
+                <div class="container">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            @if (Context.Session.GetString("username")!=null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link nav-text" asp-area="" asp-controller="Account" asp-action="Profile" asp-route-id="@Context.Session.GetInt32("userid")" >@Context.Session.GetString("username")</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link nav-text" asp-area="" asp-controller="Account" asp-action="LogOut">LogOut</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link nav-text" asp-area="" asp-controller="Account" asp-action="LogIn">LogIn</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link nav-text" asp-area="" asp-controller="Account" asp-action="Registration">Registration</a>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+
+     <div class="row1 col-12 footer border-top text-muted">
+            <div class="container text-center">
+                &copy; 2021 - BachelorsHome - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    </body>
+</html>

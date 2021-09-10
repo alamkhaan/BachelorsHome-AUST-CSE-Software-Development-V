@@ -1,0 +1,74 @@
+﻿@model BachelorsHome.Models.UserDatabase
+@{
+    ViewData["Title"] = "LogIn";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="col-md-12">
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>@TempData["ErrorMessage"]</label>
+        </div>
+    </div>
+
+}
+else if (ViewBag.Notification == "Error")
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>Invalid Email or Password</label>
+        </div>
+    </div>
+    ViewBag.Notification = "";
+}
+else if (TempData.ContainsKey("not-login"))
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>You Must Login First</label>
+        </div>
+    </div>
+    TempData.Clear();
+}
+
+<div class="row1">
+
+    <div class="row1 login-box">
+
+        <img class="login-pic-box" src="~/Images/aa.png" />
+        <div class="login-type-box">
+            <form asp-action="LogIn">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <h4 class="signup-title"><b>Login in Bachelors Home</b></h4><br>
+
+
+                <div class="login-form-row">
+                    <label asp-for="Email" class="col-md-4"></label>
+                    <input asp-for="Email" class="col-md-6" type="email" required="" placeholder="Enter Your Email" /><br>
+                </div>
+
+                <div class="login-form-row">
+                    <label asp-for="Password" class="col-md-4">Password:</label>
+                    <input asp-for="Password" class="col-md-6" type="Password" required="" placeholder="Enter Your Password"><br>
+                </div>
+
+                <div class="signup-form-submit">
+                    <input type="Submit" class="btn loginbutton" value="LogIn" name="" />
+                    <label> @ViewBag.Notification </label>
+                </div>
+            </form>
+
+            <div class="forgot-password">
+                <a href="ResetPassword">Forgot Password?</a><br>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+

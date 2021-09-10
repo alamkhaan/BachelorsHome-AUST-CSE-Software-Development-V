@@ -1,0 +1,565 @@
+.Row{
+	background: white;
+	margin: 1%;
+}
+.pic1{
+	
+	height: 500px;
+	width: 100%;
+	margin-top: 20px;
+	
+}
+
+.regi
+{
+
+	margin-left: 2%;
+	margin-top: 15px;
+	
+}
+
+.compile-form1
+{
+	
+	width: 80%;
+	height: 30px;
+	
+}
+
+
+
+.compile-form2
+{
+	width: 80%;
+	height: 250px;
+}
+
+.login
+{
+
+	margin-top: 15px;
+	margin-left: 10%;
+
+	
+}
+
+.footer-content
+{
+	margin-top: 15px;
+	margin-left: 40%;
+
+}
+
+.footer-image
+{
+	
+	background-image: url("195.jpg");
+	height: 120px;
+	border-radius: 10px;
+}
+.footer-text
+{
+	
+	margin-left: 5%;
+}
+
+
+.logo
+{
+	width : 40%;
+	height: auto;
+	
+}
+
+.login-title{
+	color:#009933;
+	
+	
+}
+
+p{
+	color: black;
+	font-size: 16px;
+}
+.icon{
+	margin-top: 25px;
+}
+#f1{
+	background: YellowGreen;
+}
+#f2{
+	background: DarkCyan;
+}
+#f3{
+	background: DimGray;
+}
+
+
+.thirdRow{
+	margin-top: 40px;
+}
+.img-circle{
+	border-radius: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+        margin-bottom: 15px;
+}
+.text_pic{
+	color: LightGrey;
+	text-align: justify;
+	font-size: 14px;
+	
+	
+}
+.fourthRow{
+	background:#F8F8FF;
+	margin-top:60px;
+}
+.fifthRow{
+	background-image: url("cd../images/195.jpg");
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	min-height:250px;
+}
+.sixthRow{
+	background: black;
+}
+
+.homebutton{
+	background-color:White;
+	box-shadow:White;
+	
+}
+
+.compiler-header
+{
+
+	padding-left: 27%;
+}
+
+
+
+.mybutton
+{
+	background-color:White;
+	box-shadow:White;
+	color : #0000ff;
+
+}
+.mybutton:hover{
+	background-color:LightGray;
+	box-shadow:Gray;
+	border-color:Gray;
+	color : #0000ff;
+}
+.homebutton:hover{
+	background-color:LightGray;
+	box-shadow:Gray;
+	border-color:Gray;
+}
+
+.compile-form
+{
+	background-color:#d9d9d9;
+	padding-left: 12%;
+	border-radius: 20px;
+
+}
+
+.compile-form2
+{
+	width: 80%;
+}
+
+.btn2
+{
+	margin : 1%;
+}
+.btn3
+{
+	margin : 2%;
+}
+
+
+.space
+{
+	height: 50px;
+}
+
+.formdesign{
+	margin-top: 50px;
+	border-radius: 20px;
+	background-color:white;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+
+}
+
+.signuppic-design
+{
+	
+	margin-top: 50px;
+	width: 100%;
+	background-color:#f2f2f2;
+	border-radius: 20px;
+
+
+}
+
+.loginpic-design
+{
+	
+	margin-top: 50px;
+	background-color:#f2f2f2;
+	width : 100%;
+	height: 370px;
+
+}
+
+.table-striped{
+	margin-top: 50px;
+}
+
+.loginbutton{
+	background-color:#00004d;
+	box-shadow:#009933;	
+	color: white;
+	
+}
+
+.loginbutton:hover{
+	background-color:#0000e6;
+	box-shadow:#1aff66;
+	
+}
+
+.signup-content
+{
+	
+	background-color:#f2f2f2;
+	border-radius: 20px;
+
+}
+
+.signup-title
+{
+	margin-left: 20%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+
+
+.login-form-row
+{
+	margin-bottom: 20px;
+}
+
+.signup-form-submit
+{
+	margin-left: 35%;
+	margin-top: 40px;
+}
+
+.add-problem-button
+{
+	margin-left: 45%;
+	margin-top: 40px;
+}
+.radiobutton
+{
+	margin-left: 5%;
+}
+
+.already-account
+{
+	margin-top: 35px;
+	margin-left: 50%;
+}
+
+.forgot-password
+{
+	margin-top: 25px;
+	margin-left : 35%;
+	margin-bottom : 18%;
+}
+
+.new-problem-design
+{
+	background-color:#e6e6e6;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	border-radius:20px;
+}
+
+.new-problem-heading
+{
+	color: black;
+	text-shadow: gray;
+	text-align: center;
+}
+
+.textarea1
+{
+	width: 100%;
+	height :37px;
+	background-color:white;
+}
+
+.textarea2
+{
+	width: 100%;
+	height :150px;
+	background-color:white;
+}
+
+.textarea3
+{
+	width: 100%;
+	height :350px;
+	background-color:white;
+}
+
+.textarea4
+{
+	width: 100%;
+	height :350px;
+	background-color:#f2f2f2;
+}
+
+.problem-header
+{
+	text-align: center;
+	margin-left: 40%;
+}
+.statement
+{
+	white-space:pre-wrap;
+	
+}
+
+.input-design
+{
+	white-space:pre-wrap;
+	
+
+}
+
+
+.problem-design
+{
+	
+	padding-left: 2%;
+}
+
+.verdict-accepted
+{
+	color:#009933;
+	font-weight: bold;
+}
+
+.verdict-wronganswer
+{
+	color:#ff0000;
+	font-weight: bold;
+}
+
+.verdict-timelimit
+{
+	color: #3333ff;
+	font-weight: bold;
+}
+
+.verdict-runtime
+{
+	color:#ffff33;
+	font-weight: bold;
+}
+
+.verdict-compile
+{
+	color:#ff884d;
+	font-weight: bold;
+}
+
+.profile-design
+{
+	border-color: black;
+	border: 1px solid;
+	border-radius:10px;
+}
+
+.bar
+{
+	border-color: black;
+	border: 1px solid;
+	border-radius:5px;
+}
+
+.profile-pic
+{
+	width:100%;
+	height: auto;
+}
+
+.update-pic
+{
+	margin-left: 15%;
+	margin-top: 7%;
+	background-color:#00004d;
+	box-shadow:#009933;	
+	color: white;
+	
+}
+
+.update-pic:hover{
+	background-color:#0000e6;
+	box-shadow:#1aff66;
+	
+
+}
+
+.image-upload{
+	margin-left: 13%;
+}
+
+.contact-form-row
+{
+	padding-left:3%;
+}
+.textarea5
+{
+	width: 100%;
+	height :75px;
+	background-color:white;
+}
+
+
+.textarea6
+{
+	width: 100%;
+	height :30px;
+	background-color:white;
+}
+
+
+
+.space2
+{
+	height:20px;
+}
+
+.contactus-form-submit
+{
+	margin-left: 35%;
+	margin-top: 27px;
+}
+
+.aboutus-design
+{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	white-space:pre-wrap;
+
+}
+.developer-heading
+{
+	border-radius: 5px;
+	background-color: #00004d;
+	
+	padding-left: 5%;
+
+}
+
+.developer-box
+{
+	margin-left: 10%;
+}
+.developer-title
+{
+	padding-left: 30%;
+
+	color: white;
+	
+}
+
+.developer-pic
+{
+	border-radius: 50%;
+	width: 60%;
+	margin-left: 20%;
+
+}
+
+.developer-box2
+{
+	background-color: #e6e6e6;
+	border-radius: 10px;
+}
+
+.developer-description
+{
+	margin-left: 5%;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.blog{
+
+	background-color: #e6e6e6;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	white-space:pre-wrap;
+	border-radius: 10px;
+	border: 1px solid;
+}
+
+.comment-design
+{
+	
+	padding-left: 10%;
+	width: 100%;
+}
+
+.blog-view-design
+{
+	
+	padding: 7%;
+}
+
+.table-striped-comment{
+	
+	width: 100%;
+}
+
+.comment-box
+{
+	background-color: #f2f2f2;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	border-radius: 10px;
+	border: 1px solid;
+}
+
+.textarea7
+{
+	width: 60%;
+	height :70px;
+	background-color:white;
+}
+
+.write-comment
+{
+	background-color: #f2f2f2;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	border-radius: 10px;
+	border: 1px solid;
+}
+
+.textarea9
+{
+	width: 100%;
+	height :350px;
+	background-color:#e6e6e6;
+}
+
+.pic9
+{
+	width: 100%;
+	height: auto;
+}

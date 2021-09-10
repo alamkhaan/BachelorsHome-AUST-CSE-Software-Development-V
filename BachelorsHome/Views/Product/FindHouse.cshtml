@@ -1,0 +1,213 @@
+﻿@{
+    ViewData["Title"] = "Find House";
+}
+@model BachelorsHome.Models.SearchPost
+
+@{
+    var list = ViewBag.ProductList;
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<div class="row1 pb-3">
+
+</div>
+<div class="text-center pb-4">
+
+    <h2 class="pb-3">Find House</h2>
+
+</div>
+
+<div class="container">
+
+    <div class="row1">
+        <div class="search-box">
+            <form asp-action="FindHouse" asp-controller="Product" method="post">
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5 class="text-white">Username:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5 class="text-white">Type:</h5>
+                    </div>
+                </div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <input asp-for="Username" type="text" class="form-control" placeholder="Enter Username:" />
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <select asp-for="Type" class="form-control">
+                            <option value="Select:">Select:</option>
+                            <option value="AC">AC</option>
+                            <option value="Non-AC">Non-AC</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row1 space2"></div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5 class="text-white">Division:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5 class="text-white">District:</h5>
+                    </div>
+                </div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <select asp-for="Division" id="dbDivision" class="form-control" asp-items="@(new SelectList(ViewBag.DivisionList,"Value","Text"))">
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <select asp-for="District" id="dbDistrict" class="form-control" asp-items="@(new SelectList(ViewBag.DistrictList,"Value","Text"))">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row1 space2"></div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5 class="text-white">Thana:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5 class="text-white">Rent:</h5>
+                    </div>
+                </div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <select asp-for="Thana" id="dbThana" class="form-control" asp-items="@(new SelectList(ViewBag.ThanaList,"Value","Text"))">
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <input type="number" asp-for="Rent" class="form-control" placeholder="Enter Your Desire Rent:" />
+                    </div>
+                </div>
+
+                <div class="row1 space2"></div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5 class="text-white">AttachedWashroom:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5 class="text-white">Food Facility:</h5>
+                    </div>
+                </div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <select asp-for="AttachedWashroom" class="form-control">
+                            <option value="Select:">Select:</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <select asp-for="FoodFacility" class="form-control">
+                            <option value="Select:">Select:</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row1 space2"></div>
+                <div class="row1 space2"></div>
+                <div class="row1">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-6">
+                        <input class="btn searchbutton" type="submit" value="Search">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row1 space2"></div>
+    <div class="row1 space2"> </div>
+    @if (list.Count!=0)
+    {
+        foreach (var item in list)
+        {
+            <div class="row1 post-box">
+                <img class="post-box-pic" src="~/@item.Picture" />
+                <div class="post-type-box">
+                    <h4>@item.Heading</h4>
+                    <h5><a asp-action="Profile" asp-controller="Account" asp-route-id="@item.UserId">By- @item.UserName</a></h5>
+
+                    <br />
+                    <p>Location: @item.Thana,@item.District,@item.Division</p>
+                    <p>Type: @item.Type</p>
+                    <p>Floor: @item.FloorNumber</p>
+                    <p>Total Rent: @item.TotalCost</p>
+                    <p>Food Facility: @item.FoodFacility</p>
+                    <p>Attached Washroom: @item.AttachedWashroom</p>
+                    <p>Available From: @item.AvailableFrom</p>
+                    <form asp-controller="Product" asp-action="ViewPost" asp-route-id="@item.Id">
+                        <input type="Submit" class="btn loginbutton" value="View Full Post" name="" />
+                    </form>
+
+
+                </div>
+
+            </div>
+            <div class="row1 space2"> </div>
+            <div class="row1 space2"> </div>
+
+        }
+    }
+    else
+    {
+       
+        <div class="alert alert-danger">
+            <p>No Post Matched</p>
+        </div>
+        <div class="row1 space2"> </div>
+
+    }
+
+</div>
+
+<script>
+    $(function () {
+        $("#dbDivision").change(function () {
+
+            $.getJSON("/Product/GetDistrictList2", { Division: $("#dbDivision").val() }, function (d) {
+                var row = "";
+                $("#dbDistrict").empty();
+                $.each(d, function (i, v) {
+                    row += "<option value=" + v.text + ">" + v.text + "</option>";
+                });
+                $("#dbDistrict").html(row);
+
+                $.getJSON("/Product/GetThanaList2", { District: $("#dbDistrict").val() }, function (d) {
+                    var row = "";
+                    $("#dbThana").empty();
+                    $.each(d, function (i, v) {
+                        row += "<option value=" + v.text + ">" + v.text + "</option>";
+                    });
+                    $("#dbThana").html(row);
+                })
+            })
+
+        })
+
+        $("#dbDistrict").change(function () {
+
+            $.getJSON("/Product/GetThanaList2", { District: $("#dbDistrict").val() }, function (d) {
+                var row = "";
+                $("#dbThana").empty();
+                $.each(d, function (i, v) {
+                    row += "<option value=" + v.text + ">" + v.text + "</option>";
+                });
+                $("#dbThana").html(row);
+            })
+        })
+    })
+
+</script>
+
+

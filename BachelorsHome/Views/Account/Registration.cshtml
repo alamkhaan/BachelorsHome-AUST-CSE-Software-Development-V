@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+}
+
+@model BachelorsHome.Models.UserDatabase
+
+@if (ViewBag.Notification == "Password")
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>Password Should be at least 6 Characters</label>
+        </div>
+    </div>
+    ViewBag.Notification = "";
+}
+else if (ViewBag.Notification == "Duplicate")
+{
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <label>Email Already Exist</label>
+        </div>
+    </div>
+    ViewBag.Notification = "";
+}
+
+<div class="row1">
+    <div class="row signup-box">
+
+
+        <div class="signup-type-box">
+            <form asp-action="Registration">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <h4 class="signup-title2"><b>Register in Bachelors Home</b></h4><br>
+
+
+                <div class="login-form-row">
+                    <label asp-for="Name" class="col-md-4"> </label>
+                    <input asp-for="Name" class="col-md-6" type="text" required="" placeholder="Enter Your Name"><br>
+                </div>
+                <div class="login-form-row">
+                    <label asp-for="Password" class="col-md-4">Password:</label>
+                    <input asp-for="Password" class="col-md-6" type="Password" name="password" required="" placeholder="Enter Your Password"><br>
+                </div>
+
+                <div class="login-form-row">
+                    <label asp-for="Gender" class="col-md-4">Gender:</label>
+                    <input asp-for="Gender" type="radio" name="gender" value="Male" required=""><label>Male</label>
+                    <input asp-for="Gender" class="radiobutton" type="radio" name="gender" value="Female" required=""><label>Female</label>
+                    <input asp-for="Gender" class="radiobutton" type="radio" name="gender" value="Other" required=""><label>Other</label><br>
+
+                </div>
+
+
+
+                <div class="login-form-row">
+                    <label asp-for="Email" class="col-md-4">Email:</label>
+                    <input asp-for="Email" class="col-md-6" type="email" name="email" required="" placeholder="Enter Your Email"><br>
+                </div>
+
+                <div class="login-form-row">
+                    <label asp-for="BloodGroup" class="col-md-4">BloodGroup:</label>
+                    
+                    <select class="col-md-6" asp-for="BloodGroup">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+
+                    </select><br>
+                    
+                </div>
+
+                <div class="login-form-row">
+                    <label asp-for="Phone" class="col-md-4">Contact No:</label>
+                    <input asp-for="Phone" class="col-md-6" required="" placeholder="01"><br>
+                </div>
+
+                <div class="login-form-row">
+                    <label asp-for="Profession" class="col-md-4">Profession:</label>
+                    <input asp-for="Profession" class="col-md-6" type="text" required="" placeholder="Your Profession:"><br>
+                </div>
+                <div class="login-form-row">
+                    <label asp-for="CurrentAddress" class="col-md-4">Current Address:</label>
+                    <input asp-for="CurrentAddress" class="col-md-6" type="text" required="" placeholder="Your Address:"><br>
+                </div>
+                <div class="login-form-row">
+                    <label asp-for="DateofBirth" class="col-md-4">Date of Birth:</label>
+                    <input asp-for="DateofBirth" class="col-md-6" type="date" required="" placeholder=""><br>
+                </div>
+
+                <div class="login-form-row">
+                    <input class="col-md-3" type="checkbox" name="agree-term" required="" />
+                    <label class="col-md-7">I agree all terms and conditions </label>
+                </div>
+
+                <div class="signup-form-submit">
+                    <button type="Submit" class="btn loginbutton" value="Submit" name=""> Submit</button>
+                </div>
+
+            </form>
+
+            <div class="forgot-password">
+                <a href="LogIn">Already Have an Account?</a><br>
+            </div>
+
+
+
+        </div>
+        <img class="signup-pic-box" src="~/Images/472.jpg" />
+    </div>
+</div>
+
+
+
+

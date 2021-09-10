@@ -1,0 +1,131 @@
+﻿@model IEnumerable<BachelorsHome.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Division)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoOfComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableSeat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatRent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InternetFacility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodFacility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttachedWashroom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttachedBalcony)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Division)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableSeat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatRent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InternetFacility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodFacility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttachedWashroom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttachedBalcony)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

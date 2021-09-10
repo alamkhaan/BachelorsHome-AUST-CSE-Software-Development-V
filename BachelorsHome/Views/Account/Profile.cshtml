@@ -1,0 +1,295 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+}
+
+@model BachelorsHome.Models.UserDatabase
+@using Microsoft.AspNetCore.Http;
+<div class="row1">
+
+    <div class="profile-page">
+        <div class="profile-pagebox">
+            <div class="profile-box">
+                <div class="row1">
+                    <img class="ProfilePic" src=@Html.DisplayFor(model => model.Picture) />
+                    <div class="profile-box2">
+                        <div class="row1">
+                            <div class="col-md-6">
+                                <h2 class="profile-title">@Html.DisplayFor(model => model.Name) </h2><br />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="rating">
+                                    <br />
+                                    @for (var i = 1; i <= Math.Floor(Model.Rating); i++)
+                                    {
+                                        <span class="fa fa-star checked"></span>
+                                    }
+                                    @if (Model.Rating - (Double)(Math.Floor(Model.Rating) * 1.0) > 0.01)
+                                    {
+                                        <span class="fa fa-star-half-full checked"></span>
+                                        for (var i = Math.Floor(Model.Rating) + 2; i <= 5; i++)
+                                        {
+                                            <span class="fa fa-star-o"></span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (var i = Math.Floor(Model.Rating) + 1; i <= 5; i++)
+                                        {
+                                            <span class="fa fa-star-o"></span>
+                                        }
+                                    }
+                                    
+                                    <br />
+                                    <label>@Html.DisplayFor(model => model.Rating) Rating</label><br />
+                                    <label>@Html.DisplayFor(model => model.NumberOfReviews) Reviews</label><br />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row1">
+                            <div class="col-md-6">
+                                <h4>@Html.DisplayFor(model => model.Profession)</h4>
+                                <p><img class="location-icon" src="~/Images/loc.png" /> @Html.DisplayFor(model => model.CurrentAddress)</p>
+
+                            </div>
+                            <div class="col-md-6">
+                                @if (Context.Session.GetString("username") != null && Model.Id == Context.Session.GetInt32("userid"))
+                                {
+                                    <form asp-action="Chat" asp-controller="Product" asp-route-id="@Model.Id"> 
+                                        <div class="signup-form-submit">
+                                            <input type="Submit" class="btn loginbutton" value="See Messenger" name="" />
+
+                                        </div>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-action="Chat" asp-controller="Product" asp-route-id="@Model.Id">
+                                        <div class="signup-form-submit">
+                                            <input type="Submit" class="btn loginbutton" value="Send Message" name="" />
+
+                                        </div>
+                                    </form>
+                                }
+
+                            </div>
+
+                        </div>
+
+                        <div class="row1 space2"></div>
+                        <div class="row1 space2"></div>
+                        <div class="row1 space2"></div>
+
+                        <div class="row1">
+
+
+                            <div class="profile-data-box">
+                                <h5>@Html.DisplayFor(model => model.Connections)</h5>
+                                <p>Connections</p>
+                            </div>
+                            <div class="profile-data-box">
+                                <h5>@Html.DisplayFor(model => model.NumberOfPosts)</h5>
+                                <p>Posts</p>
+                            </div>
+
+
+
+
+
+
+
+
+                            <form asp-action="Index">
+
+                                <input type="Submit" class="btn profilebutton" value="          See All Posts          " name="" />
+
+
+                            </form>
+
+
+
+                            @if(Context.Session.GetString("username") != null && Model.Id== Context.Session.GetInt32("userid"))
+                            {
+                                    <form asp-controller="Account" asp-action="EditProfile" asp-route-id="@Context.Session.GetInt32("userid")">
+                                        <input type = "Submit" class="btn profilebutton" value="          Edit Profile          " name="" />
+                                    </form>
+                            }
+
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row1">
+
+                <div class="about-me">
+                    <div class="row1">
+                        <div class="about-me2">
+                            <h2>About Me:</h2><br /><br />
+                            <p>
+                                @Html.DisplayFor(model => model.AboutMe)
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="row1">
+                        <div class="about-me2">
+                            <h2>Professional Interest:</h2><br /><br />
+                            <p>
+                                @Html.DisplayFor(model => model.ProfessionalInterest)
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="info">
+                    <div class="row1">
+
+                        <h2 class="info-title">Personal Information</h2>
+
+                    </div>
+                    <div class="row1">
+                        <div class="info-des">
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>User Id:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.Id)</label>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Name:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.Name)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Email:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.Email)</label>
+                                </div>
+                            </div>
+
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Contact No:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.Phone)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Gender:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.Gender)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>BirthDate:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.DateofBirth)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Blood Group:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.BloodGroup)</label>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Current Address:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.CurrentAddress)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Permanent Address:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.PermanentAddress)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Hobby:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.Hobby)</label>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Facebook:</label>
+                                </div>
+                                <div class="info-right">
+
+                                    <a href="@Html.DisplayFor(model => model.Facebook)" alt=""> @Html.DisplayFor(model => model.Facebook)</a>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Religious Views:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.ReligiousViews)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Political Interest:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.PoliticalInterest)</label>
+                                </div>
+                            </div>
+
+                            <div class="row1">
+                                <div class="info-left">
+                                    <label>Registration Date:</label>
+                                </div>
+                                <div class="info-right">
+                                    <label>@Html.DisplayFor(model => model.RegistrationDate)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

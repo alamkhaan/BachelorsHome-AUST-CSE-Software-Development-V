@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Edit Comment";
+}
+@model BachelorsHome.Models.CommentModel
+
+
+<div class="container">
+
+    <div class="row1">
+        <div class="resetpass">
+            <form asp-action="EditComment" asp-controller="Product" asp-route-id="@Model.Id" method="post">
+                <div class="form-group">
+
+                    <div class="col-md-8">
+                        <input asp-for="@Model.Comment" type="text" class="form-control" required="">
+
+                    </div>
+                </div>
+                <div class="resetemail-form-submit">
+                    <button type="Submit" class="btn loginbutton" name="">Edit Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

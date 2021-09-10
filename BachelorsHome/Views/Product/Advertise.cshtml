@@ -1,0 +1,329 @@
+﻿@{
+    ViewData["Title"] = "Advertise";
+}
+@model BachelorsHome.Models.Product
+<script   src="~/lib/jquery/dist/jquery.js"> </script>
+<div class="row1">
+
+    <div class="row1 login-box">
+
+        <img class="advertise-pic-box2" src="~/Images/470610c20aff0037-animated-house-free-download-clip-art-free-clip-art.gif" />
+        <div class="advertise-type-box2">
+            <form asp-action="Advertise" enctype="multipart/form-data" asp-antiforgery="true"  method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <h4 class="advertise-title"><b>Create Post:</b></h4><br>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Heading: </h5>
+                    </div>
+                </div>
+
+                <div class="row1">
+
+
+                    <div class="col-md-11">
+                        <input asp-for="Heading" class="textarea8" type="text" required="">
+                    </div>
+                </div>
+                <div class="row1 space2"></div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Division:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>District:</h5>
+                    </div>
+                </div>
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <select asp-for="Division" id="dbDivision" class="textarea6" asp-items="@(new SelectList(ViewBag.DivisionList,"Value","Text"))">
+                           
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <select asp-for="District" id="dbDistrict" class="textarea6" asp-items="@(new SelectList(ViewBag.DistrictList,"Value","Text"))">
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="row1 space2"></div>
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Thana:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>House Address:</h5>
+                    </div>
+                </div>
+
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <select asp-for="Thana" class="textarea6" id="dbThana" asp-items ="@(new SelectList(ViewBag.ThanaList,"Value","Text"))">
+                            
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <input asp-for="HomeAddress" class="textarea6" type="text" required="">
+                    </div>
+                </div>
+
+
+                <div class="row1 space2"></div>
+
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Type:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>Gender:</h5>
+                    </div>
+                </div>
+
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <select asp-for="Type" class="textarea6">
+                            <option value="AC">AC</option>
+                            <option value="Non-AC">Non-AC</option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <select asp-for="Gender" class="textarea6">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row1 space2"></div>
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Picture:</h5>
+                    </div>
+                    
+                </div>
+                <div class="row1">
+
+
+                    <div class="col-md-11">
+                        <input  class="textarea6" type="file" name="myFile" accept="image/*" id="myFile" required="" >
+                        
+                    </div>
+                    
+                </div>
+                <div class="row1 space2"></div>
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Room Size:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>Available Seat:</h5>
+                    </div>
+                </div>
+
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <input asp-for="RoomSize"class="textarea6" type="text" required="">
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <input asp-for="AvailableSeat" class="textarea6" type="number" required="">
+                    </div>
+                </div>
+
+
+                <div class="row1 space2"></div>
+
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Seat Rent:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>Total Cost:</h5>
+                    </div>
+                </div>
+
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <input asp-for="SeatRent" class="textarea6" type="number" required="">
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <input asp-for="TotalCost" class="textarea6" type="number" required="">
+                    </div>
+                </div>
+                <div class="row1 space2"></div>
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Floor No:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>Available From:</h5>
+                    </div>
+                </div>
+
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <input asp-for="FloorNumber" class="textarea6" required="">
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <input asp-for="AvailableFrom" class="textarea6" type="date" required="" placeholder=""><br>
+                    </div>
+                </div>
+                <div class="row1 space2"></div>
+
+
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>InternetFacility:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>FoodFacility:</h5>
+                    </div>
+                </div>
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <select asp-for="InternetFacility" class="textarea6">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <select asp-for="FoodFacility" class="textarea6">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row1 space2"></div>
+
+
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>AttachedWashroom:</h5>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <h5>AttachedBalcony:</h5>
+                    </div>
+                </div>
+                <div class="row1">
+
+                    <div class="col-md-5">
+                        <select asp-for="AttachedWashroom" class="textarea6">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5">
+                        <select asp-for="AttachedBalcony" class="textarea6">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row1 space2"></div>
+
+
+
+
+
+
+                <div class="row1">
+                    <div class="col-md-5">
+                        <h5>Details: </h5>
+                    </div>
+                </div>
+
+                <div class="row1">
+
+
+                    <div class="col-md-11">
+                        <input asp-for="Details" class="form-control textarea7" type="text" required="">
+                    </div>
+                </div>
+                <div class="contactus-form-submit">
+                    <button type="Submit" class="btn loginbutton" value="Submit" name="submit"> Submit</button>
+                </div>
+            </form>
+            <div class="row1 space2"></div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#dbDivision").change(function () {
+
+            $.getJSON("/Product/GetDistrictList", { Division: $("#dbDivision").val() }, function (d) {
+                var row = "";
+                $("#dbDistrict").empty();
+                $.each(d, function (i, v) {
+                    row += "<option value=" + v.text + ">" + v.text + "</option>";
+                });
+                $("#dbDistrict").html(row);
+
+                $.getJSON("/Product/GetThanaList", { District: $("#dbDistrict").val() }, function (d) {
+                    var row = "";
+                    $("#dbThana").empty();
+                    $.each(d, function (i, v) {
+                        row += "<option value=" + v.text + ">" + v.text + "</option>";
+                    });
+                    $("#dbThana").html(row);
+                })
+            })
+           
+        })
+
+        $("#dbDistrict").change(function () {
+
+            $.getJSON("/Product/GetThanaList", { District: $("#dbDistrict").val() }, function (d) {
+                var row = "";
+                $("#dbThana").empty();
+                $.each(d, function (i, v) {
+                    row += "<option value=" + v.text + ">" + v.text + "</option>";
+                });
+                $("#dbThana").html(row);
+            })
+        })
+    })
+
+</script>

@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "BachelorsHomeContext"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "BachelorsHomeContactContext"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "BachelorsHomeProductContext"
+    }
+  }
+}

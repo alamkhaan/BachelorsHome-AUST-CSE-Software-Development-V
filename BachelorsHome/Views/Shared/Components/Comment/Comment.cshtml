@@ -1,0 +1,35 @@
+﻿@model IList<BachelorsHome.Models.CommentModel>
+@using Microsoft.AspNetCore.Http
+@foreach (var comment in Model)
+{
+
+
+    <div class="row1">
+        <div class="comment-pic">
+            <img class="comment-user-pic" src="@comment.UserPic" />
+        </div>
+        <div class="comment-text">
+            <div class="row1">
+                <div class="comment-text2">
+                    <h6 class="blue"><a asp-action="Profile" asp-controller="Account" asp-route-id="@comment.UserId">@comment.UserName</a></h6>
+                    <p class="comment4">@comment.Comment</p>
+                </div>
+            </div>
+            <div class="row1">
+                <p>@comment.NowTime</p>
+                @if (Context.Session.GetInt32("userid") ==comment.UserId)
+                {
+                    <a class="comment-delete" asp-action="EditComment" asp-controller="Product" asp-route-id="@comment.Id">Edit</a> <a class="comment-delete" asp-action="DeleteComment" asp-controller="Product" asp-route-id="@comment.Id">Delete</a>
+                }
+                @if(comment.Editcnt!=0)
+                {
+                    <p class="comment-delete">Edited @comment.Editcnt times</p>
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+
+}
